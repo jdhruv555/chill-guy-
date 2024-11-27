@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Chill Guy Checker 😎</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body class="font-sans">
+    <div class="bg-white p-8 rounded-xl shadow-2xl text-center max-w-md w-full">
+        <h1 class="text-3xl font-bold mb-6 text-purple-600">🧊 Chill Guy Checker 🕶️</h1>
+        
+        <input 
+            type="text" 
+            id="nameInput" 
+            placeholder="Enter your username" 
+            class="w-full p-3 border-2 border-purple-300 rounded-lg mb-4"
+        >
+        
+        <button 
+            onclick="checkChillness()" 
+            class="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition duration-300"
+        >
+            Check My Chill Level
+        </button>
+        
+        <div id="result" class="mt-6 text-lg font-semibold"></div>
+        
+        <div class="mt-4">
+            <p class="text-sm text-gray-500">Made by Dhruv 😎 
+                <span class="text-purple-500 text-[10px] block">
+                    Professional Procrastination Engineer & Part-Time Coolness Architect
+                </span>
+            </p>
+            <p class="text-[8px] text-gray-400 italic">
+                Warning: Side effects of using this website may include spontaneous coolness 🕶️
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function checkChillness() {
+            const username = document.getElementById('nameInput').value.trim();
+            const resultDiv = document.getElementById('result');
+            
+            if (!username) {
+                resultDiv.innerHTML = "Bruh, enter a username! 🙄";
+                return;
+            }
+            
+            const chillFactors = [
+                "You're so chill, ice cubes ask you for advice! ❄️",
+                "Chiller than a polar bear's toenails! 🐻‍❄️",
+                "Your chill level is beyond human comprehension 😎",
+                "Professional relaxation expert detected! 🛋️",
+                "Zen master of coolness incoming! 🧘‍♂️"
+            ];
+            
+            const sassyComments = {
+                'short': [
+                    `Hey ${username}, your name's shorter than your chill level! 😂`,
+                    `${username}? More like ${username}-ish chill! 🤏`
+                ],
+                'long': [
+                    `Wow, ${username}... that's a mouthful. Hope your chill is longer! 🙃`,
+                    `${username} sounds complicated. Your chill better not be! 😅`
+                ]
+            };
+            
+            const chillPercentage = Math.floor(Math.random() * 100) + 1;
+            
+            let sassyComment = username.length <= 4 
+                ? sassyComments.short[Math.floor(Math.random() * sassyComments.short.length)]
+                : sassyComments.long[Math.floor(Math.random() * sassyComments.long.length)];
+            
+            let chillMessage = chillFactors[Math.floor(Math.random() * chillFactors.length)];
+            
+            resultDiv.innerHTML = `
+                <p>🧊 Chill Level: ${chillPercentage}%</p>
+                <p>${sassyComment}</p>
+                <p>${chillMessage}</p>
+            `;
+        }
+    </script>
+</body>
+</html>
